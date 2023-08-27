@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operator Incident Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&display=swap');
+
+        .custom-checkbox {
+  display: inline-block;
+  position: relative;
+  width: 20px;
+  height: 20px;
+}
+
+.custom-checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  
+}
+
+.checkbox-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background-color: white; /* Start with white background */
+  border: 2px solid #50cd89; /* Add an orange border */
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s, border-color 0.3s; /* Add transition effects */
+}
+
+.checkbox-icon::after {
+  content: "\2713"; /* Checkmark Unicode character */
+  color: white;
+  font-size: 18px;
+  display: none;
+}
+
+.custom-checkbox input:checked + .checkbox-icon {
+  background-color: #50cd89; /* Change background color on checked */
+  border-color: #50cd89; /* Change border color on checked */
+}
+
+.custom-checkbox input:checked + .checkbox-icon::after {
+  display: block;
+}
+
+
+
+
+        .oscreen_four{
+            background-image: url('https://i.ibb.co/cYdsCWT/image-5.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100vh;
+            position: relative;
+        }
+
+        /* Site */
+        .site_nav{
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: rgba(255, 255, 255, 1);
+            z-index: 99;
+
+        }
+        .site_head{
+            background-color: rgba(255, 255, 255, 1);
+            font-family: Lato;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 24px;
+            letter-spacing: 0em;
+        }
+        .site_content{
+            padding: 10px;
+            position: relative;
+        }
+        .site_content button{
+            padding: 5px 10px;
+            border: none;
+            background-color: rgba(242, 242, 242, 1) !important;
+            margin-right: 4px;
+        }
+        .site_content button i{
+            font-size: 22px;
+        }
+        .site_content button:hover{
+            background-color: #595959 !important;
+            color: white;
+        }
+        .site_body{
+            position: absolute;
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 1);
+            left: -12px;
+            top: 16px;
+            padding: 14px 20px 14px 0;
+            transform: skewY(12deg);
+            z-index: 9;
+        }
+        .site_bodytwo{
+            position: absolute;
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 1);
+            left: -8px;
+            top: 14px;
+            padding: 14px 11px 14px 0;
+            transform: skewX(12deg);
+            z-index: 9;
+        }
+
+        /* Level */
+        .level_nav{
+            position: absolute;
+            top: 200px;
+            right: 0;
+            background-color: rgba(255, 255, 255, 1);
+            z-index: 99;
+            border: 2px solid rgba(255, 255, 255, 1);
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+        }
+        .level_head{
+            background-color: rgba(255, 255, 255, 1);
+            font-family: Lato;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 24px;
+            letter-spacing: 0em;
+            padding: 5px;
+        }
+        .level_content{
+            padding: 10px 6px 10px 10px;
+            display: flex;
+            flex-direction: column;
+        }
+        .level_content button{
+            padding: 5px 10px;
+            border: none;
+            background-color: rgba(242, 242, 242, 1) !important;
+            margin-right: 4px;
+            margin-bottom: 8px;
+        }
+        .level_content button:hover{
+            background-color: #595959 !important;
+            color: white;
+        }
+        .level_content button:nth-child(4){
+            margin-bottom: 0;
+        }
+
+        /* System */
+        .system_nav{
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background-color: rgba(255, 255, 255, 1);
+            z-index: 99;
+            overflow: hidden;
+        }
+        .sysytem_head{
+            background-color: rgba(255, 255, 255, 1);
+            font-family: Lato;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 24px;
+            letter-spacing: 0em;
+            padding: 5px;
+
+        }
+        .system_content{
+            padding: 10px;
+            position: relative;
+        }
+        .system_content .row .col-4{
+            display: flex;
+            flex-direction: column;
+            padding: 2px !important;
+        }
+        .system_content .row .col-3{
+            display: flex;
+            flex-direction: column;
+            padding: 2px !important;
+        }
+        .system_content .row .col-4 button{
+            padding: 5px 10px;
+            border: none;
+            background-color: rgba(242, 242, 242, 1) !important;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+        .system_content .row .col-3 button{
+            padding: 5px 10px;
+            border: none;
+            background-color: rgba(242, 242, 242, 1) !important;
+            margin-right: 4px;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+        .system_content .row .col-4 button:hover{
+            background-color: #595959 !important;
+        }
+        .system_content .row .col-3 button:hover{
+            background-color: #595959 !important;
+        }
+        .system_body{
+            position: absolute;
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 1);
+            left: -16px;
+            top: 40px;
+            padding: 14px 20px 14px 0;
+            transform: skewY(12deg);
+            z-index: 9;
+        }
+
+        
+
+        @media screen and (max-width:992px) {
+            .site_content{
+                font-size: 10px;
+            }
+
+            .level_content{
+                font-size: 10px;
+            }
+            .level_content img{
+                height: 20%;
+                width: 20%;
+            }
+
+            .system_nav{
+                font-size: 10px;
+
+            }
+            .system_content img{
+                 height: 85%;
+                 width: 40%;
+            }
+
+            .checkbox-icon{
+                width: 20px;
+                height: 15px;
+            }
+        }
+
+        @media screen and (max-width:768px) {
+            .level_nav{
+                top: 120px;
+            }
+        }
+
+        @media screen and (max-width:578px) {
+            .site_content{
+                font-size: 4px;
+            }
+            .level_content{
+                font-size: 7px;
+            }
+            .level_content img{
+                height: 18%;
+                width: 18%;
+            }
+            .system_nav{
+                font-size: 7px;
+
+            }
+            .system_content img{
+                 height: 70%;
+                 width: 50%;
+            }
+            .level_nav{
+                top: 90px;
+            }
+
+        }
+
+        @media screen and (max-width:350px) {
+            .site_content{
+                font-size: 3px;
+            }
+            .level_content{
+                font-size: 4px;
+            }
+            .level_content img{
+                height: 14%;
+                width: 14%;
+            }
+
+            .system_nav{
+                font-size: 4px;
+
+            }
+            .system_content img{
+                 height: 18%;
+                 width: 18%;
+            }
+            .level_nav{
+                top: 90px;
+            }
+
+        }
+
+
+
+    </style>
+</head>
+<body>
+
+    <section class="oscreen_four">
+
+        <div class="site_nav">
+            <div class="site_head text-center shadow-sm">Site Navigation</div>
+            <div class="site_content">
+               <button><i class="fa-solid fa-building" style="color: #50cd89;"></i><br>Building 1</button>
+               <button><i class="fa-solid fa-building" style="color: #50cd89;"></i><br>Building 2</button>
+               <button><i class="fa-solid fa-building" style="color: #50cd89;"></i><br>Building 3</button>
+               <button><i class="fa-solid fa-building" style="color: #50cd89;"></i><br>Building 4</button>
+               <div class="site_body"></div>
+               <div class="site_bodytwo"></div>
+          </div>
+        </div>
+
+    <div class="level_nav">
+        <div class="level_head text-center shadow-sm">Level Navigation</div>
+        <div class="level_content">
+            <button><img src="https://i.ibb.co/vXmqYcH/Group-1000006912.png" alt="Level logo"><br>Level 1</button>
+            <button><img src="https://i.ibb.co/vXmqYcH/Group-1000006912.png" alt="Level logo"><br>Level 2</button>
+            <button><img src="https://i.ibb.co/vXmqYcH/Group-1000006912.png" alt="Level logo"><br>Level 3</button>
+            <button><img src="https://i.ibb.co/vXmqYcH/Group-1000006912.png" alt="Level logo"><br>Level 4</button>
+        </div>
+    </div>
+
+
+    <div class="system_nav">
+        <div class="site_head text-center shadow-sm">System Navigation</div>
+        <div class="system_content">
+            <div class="row">
+                <div class="col-6">
+                    <div class="row">
+                        <div class="col-4 text-center">
+                            <button><img src="https://i.ibb.co/T2wvQ5V/image-18.png" alt="system icon"></i></button>
+                            <div class="d-flex justify-content-center">
+                                <label class="custom-checkbox text-center">
+                                    <input id="checkboxInput" type="checkbox">
+                                    <span class="checkbox-icon"></span>
+                                </label>
+                            </div>
+                            <span>All Equipment</span>
+                        </div>
+
+                        <div class="col-4 text-center">
+                            <button><img src="https://i.ibb.co/dcRfZ21/Group.png" alt="system icon"></i></button>
+                            <div class="d-flex justify-content-center">
+                                <label class="custom-checkbox text-center">
+                                    <input id="checkboxInput" type="checkbox">
+                                    <span class="checkbox-icon"></span>
+                                </label>
+                            </div>
+                            <span>UVSS</span>
+                        </div>
+
+                        <div class="col-4 text-center">
+                            <button><img src="https://i.ibb.co/SvsWVpF/Vector-6.png" alt="system icon"><br></button>
+                            <div class="d-flex justify-content-center">
+                                <label class="custom-checkbox text-center">
+                                    <input id="checkboxInput" type="checkbox">
+                                    <span class="checkbox-icon"></span>
+                                </label>
+                            </div>
+                            <span>Wireless Padlock</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="row">
+                        <div class="col-3 text-center">
+                            <button class="btn btn-primary"><img src="https://i.ibb.co/z29vwfF/Vector-7.png" alt="system icon"><br></button>
+                            <div class="d-flex justify-content-center">
+                                <label class="custom-checkbox text-center">
+                                    <input id="checkboxInput" type="checkbox">
+                                    <span class="checkbox-icon"></span>
+                                </label>
+                            </div>
+                            <span>Door Access</span>
+                        </div>
+
+                        <div class="col-3 text-center">
+                            <button class="btn btn-primary"><img src="https://i.ibb.co/bsjKDMX/Vector-3.png" alt="system icon"><br></button>
+                            <div class="d-flex justify-content-center">
+                                <label class="custom-checkbox text-center">
+                                    <input id="checkboxInput" type="checkbox">
+                                    <span class="checkbox-icon"></span>
+                                </label>
+                            </div>
+                            <span>CCTV</span>
+                        </div>
+
+                        <div class="col-3 text-center">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><img src="https://i.ibb.co/qsgq21f/Vector-4.png" alt="system icon"></button>
+                            <div class="d-flex justify-content-center">
+                                <label class="custom-checkbox text-center">
+                                    <input id="checkboxInput" type="checkbox">
+                                    <span class="checkbox-icon"></span>
+                                </label>
+                            </div>
+                            <span>Fire Alarm</span>
+
+                        </div>
+
+
+                        <div class="col-3 text-center">
+                            <button class="btn btn-primary"><img src="https://i.ibb.co/4g8fVm2/Vector-5.png" alt="system icon"><br></button>
+                            <div class="d-flex justify-content-center">
+                                <label class="custom-checkbox text-center">
+                                    <input id="checkboxInput" type="checkbox">
+                                    <span class="checkbox-icon"></span>
+                                </label>
+                            </div>
+                            <span>FR Tablet</span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+               <!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Zone 6 | C11-A- Office Area</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img class="img-fluid" src="https://i.ibb.co/RgS8mbC/image-28.png" alt="">
+        </div>
+      </div>
+    </div>
+  </div>             
+
+
+
+
+
+
+
+
+    </section>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
