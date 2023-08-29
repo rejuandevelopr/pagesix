@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Operator Incident Dashboard</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&display=swap');
@@ -204,7 +204,6 @@
             padding: 5px 10px;
             border: none;
             background-color: rgba(242, 242, 242, 1) !important;
-            margin-right: 4px;
             margin-bottom: 8px;
             text-align: center;
         }
@@ -223,6 +222,52 @@
             padding: 14px 20px 14px 0;
             transform: skewY(12deg);
             z-index: 9;
+        }
+
+        /* Modal */
+        .firedept_btn{
+            padding: 5px 18px 5px 18px;
+            background-color: transparent !important;
+            border-color: rgba(0, 149, 232, 1) !important;
+            font-family: Lato;
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 24px;
+            letter-spacing: 0em;
+            text-align: center;
+            color: black !important;
+        }
+        .firedept_btn:hover{
+            background-color: #595959 !important;
+            border-color: #595959 !important;
+            color: white !important;
+        }
+        .safetydept_btn{
+            padding: 5px 18px 5px 18px;
+            background-color: rgba(0, 149, 232, 1) !important;
+            border-color: rgba(0, 149, 232, 1) !important;
+            font-family: Lato;
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 24px;
+            letter-spacing: 0em;
+            text-align: center;
+            color: white !important;
+        }
+        .safetydept_btn:hover{
+            background-color: #595959 !important;
+            border-color: #595959 !important;
+            color: white !important;
+        }
+        textarea{
+            border-color: #59595975 !important;
+            border-radius: 5px;
+        }
+        .save_btn{
+            background-color: rgba(217, 33, 78, 1);
+            border-color: rgba(217, 33, 78, 1);
+            padding-left: 22px;
+            padding-right: 22px;
         }
 
         
@@ -245,8 +290,8 @@
 
             }
             .system_content img{
-                 height: 85%;
-                 width: 40%;
+                 height: 100%;
+                 width: 60%;
             }
 
             .checkbox-icon{
@@ -277,8 +322,8 @@
 
             }
             .system_content img{
-                 height: 70%;
-                 width: 50%;
+                 height: 100%;
+                 width: 30%;
             }
             .level_nav{
                 top: 90px;
@@ -303,8 +348,8 @@
 
             }
             .system_content img{
-                 height: 18%;
-                 width: 18%;
+                 height: 100%;
+                 width: 30%;
             }
             .level_nav{
                 top: 90px;
@@ -347,7 +392,7 @@
         <div class="site_head text-center shadow-sm">System Navigation</div>
         <div class="system_content">
             <div class="row">
-                <div class="col-6">
+                <div class="col-sm-6">
                     <div class="row">
                         <div class="col-4 text-center">
                             <button><img src="https://i.ibb.co/T2wvQ5V/image-18.png" alt="system icon"></i></button>
@@ -384,7 +429,7 @@
                     </div>
                 </div>
 
-                <div class="col-6">
+                <div class="col-sm-6">
                     <div class="row">
                         <div class="col-3 text-center">
                             <button class="btn btn-primary"><img src="https://i.ibb.co/z29vwfF/Vector-7.png" alt="system icon"><br></button>
@@ -409,7 +454,7 @@
                         </div>
 
                         <div class="col-3 text-center">
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><img src="https://i.ibb.co/qsgq21f/Vector-4.png" alt="system icon"></button>
+                            <button id="openModalsBtn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal1"><img src="https://i.ibb.co/qsgq21f/Vector-4.png" alt=""></button>
                             <div class="d-flex justify-content-center">
                                 <label class="custom-checkbox text-center">
                                     <input id="checkboxInput" type="checkbox">
@@ -439,20 +484,67 @@
     </div>
 
 
-               <!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+     <!-- First Modal -->
+<div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="modal1Label" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
     <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="staticBackdropLabel">Zone 6 | C11-A- Office Area</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal1Label">Zone 6 | C11-A- Office Area</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img class="img-fluid" src="https://i.ibb.co/RgS8mbC/image-28.png" alt="Office Area Image">
+            </div>
         </div>
-        <div class="modal-body">
-          <img class="img-fluid" src="https://i.ibb.co/RgS8mbC/image-28.png" alt="">
-        </div>
-      </div>
     </div>
-  </div>             
+</div>
+
+<!-- Second Modal -->
+<div class="modal fade" id="modal2" tabindex="-1" aria-labelledby="modal2Label" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog" style="margin-top: 150px; max-width: 420px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal2Label">Fire Alarm - Procedure</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                
+                <div class="d-flex justify-content-between mt-2">
+                    <div>
+                        <h6>Step 1: Check Camera</h6>
+                        <p>Check Camra icon for CCTV Image</p>
+                    </div>
+                    <img width="40px" height="40px" class="mb-4" src="https://i.ibb.co/b2zZYyx/Group-1000006984.png" alt="CCTV">
+                </div>
+
+                <div class="mt-2">
+                    <h6>Step 2: Notify Rescue Teams</h6>
+                    <div class="d-flex justify-content-evenly">
+                        <button class="btn btn-primary firedept_btn">Fire Dept</button>
+                        <button class="btn btn-primary safetydept_btn">Safety Dept</button>
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <p>Add Extra information:</p>
+                    <textarea class="shadow-sm" id="myTextarea" rows="4" cols="50"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">End</button>
+                <button type="button" class="btn btn-primary save_btn"><i class="fa-solid fa-right-long" style="color: #ffffff;"></i></button>
+              </div>
+        </div>
+    </div>
+</div>
+
+
+   
+
+               
+  
+  
+ 
 
 
 
@@ -464,6 +556,26 @@
     </section>
     
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.getElementById('openModalsBtn').addEventListener('click', function () {
+            // Show both modals
+            var modal1 = new bootstrap.Modal(document.getElementById('modal1'));
+            var modal2 = new bootstrap.Modal(document.getElementById('modal2'));
+            modal1.show();
+            modal2.show();
+        });
+    
+        // Listen for modal hide events and remove the modal-backdrop manually
+        document.getElementById('modal1').addEventListener('hidden.bs.modal', function () {
+            document.querySelector('.modal-backdrop').remove();
+        });
+    
+        document.getElementById('modal2').addEventListener('hidden.bs.modal', function () {
+            document.querySelector('.modal-backdrop').remove();
+        });
+    </script>
+    
 </body>
 </html>
